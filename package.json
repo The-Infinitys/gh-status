@@ -1,8 +1,11 @@
 {
   "name": "gh-status",
-  "module": "src/main.ts",
+  "module": "src/lib.ts",
   "type": "module",
   "private": true,
+  "scripts": {
+    "main":"bun run ./src/main.ts"
+  },
   "devDependencies": {
     "@types/bun": "^1.3.3",
     "@types/node": "^24.10.1"
