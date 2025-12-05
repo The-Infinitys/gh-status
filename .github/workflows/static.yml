@@ -45,8 +45,8 @@ jobs:
         run: bun install
 
       - name: Build project
-        # ビルドコマンドを実行。通常、静的ファイルを 'out' ディレクトリに生成する
-        # ここはご自身のプロジェクトの実際のビルドコマンド（例: bun run build）に置き換えてください
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: bun run main
 
       # ⬆️ ここまでBunプロジェクトのセットアップとビルド ⬆️
