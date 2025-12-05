@@ -43,7 +43,14 @@ jobs:
       - name: Install dependencies
         # Bunで依存関係をインストール
         run: bun install
-        
+      - name: Authenticate GitHub CLI
+        env:
+          # GITHUB_TOKENを環境変数 GH_TOKEN として渡す
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # GH_TOKENを使って非対話的にGitHub CLIにログインする
+          # これにより、ghコマンドがリポジトリに対する権限を持つようになる
+          echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
       - name: Build project
         # ビルドコマンドを実行。通常、静的ファイルを 'out' ディレクトリに生成する
         # ここはご自身のプロジェクトの実際のビルドコマンド（例: bun run build）に置き換えてください
