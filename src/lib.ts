@@ -1,3 +1,3 @@
-export * from "./config";
-export * from "./gh";
-export * from "./svg";
+export * from "./lib/config";
+export * from "./lib/gh";
+export * from "./lib/svg";

@@ -1,8 +1,0 @@
-backgroundColor: "#24292e"
-textColor: "#ffffff"
-languageColors:
-  TypeScript: "#3178c6"
-  JavaScript: "#f1e05a"
-  Python: "#3572A5"
-  Java: "#b07219"
-  Go: "#00ADD8"
