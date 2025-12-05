@@ -12,14 +12,12 @@
     -   `config/gh.yaml` ファイル
     -   標準入力からの対話型入力
     の優先順位でユーザー名を設定できます。
--   **将来的にはSVG表示に対応**: 現在は集計されたJSONデータをコンソールに出力しますが、将来的には[anuraghazra/github-readme-stats](https://github.com/anuraghazra/github-readme-stats) のように、これらの統計情報をSVG形式で表示する機能を追加する予定です。
-
 ## 🚀 Installation
 
-まず、プロジェクトのリポジトリをクローンし、依存関係をインストールします。
+まず、プロジェクトのリポジトリをフォーク&クローンし、依存関係をインストールします。
 
 ```bash
-git clone https://github.com/your-username/gh-status.git # <--- ここは実際のレポURLに置き換えてください
+git clone https://github.com/Yourname/gh-status
 cd gh-status
 bun install
 ```
