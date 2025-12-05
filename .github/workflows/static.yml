@@ -30,43 +30,36 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        
+
       # ⬇️ ここからBunプロジェクトのセットアップとビルドを追加 ⬇️
-        
-      - name: Setup Bun 
+
+      - name: Setup Bun
         # Bunを設定するためのGitHub Actionを使用
         uses: oven-sh/setup-bun@v1
         with:
           # プロジェクトに合わせてBunのバージョンを指定（省略時は最新）
-          bun-version: latest 
+          bun-version: latest
 
       - name: Install dependencies
         # Bunで依存関係をインストール
         run: bun install
-      - name: Authenticate GitHub CLI
-        env:
-          # GITHUB_TOKENを環境変数 GH_TOKEN として渡す
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          # GH_TOKENを使って非対話的にGitHub CLIにログインする
-          # これにより、ghコマンドがリポジトリに対する権限を持つようになる
-          echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+
       - name: Build project
         # ビルドコマンドを実行。通常、静的ファイルを 'out' ディレクトリに生成する
         # ここはご自身のプロジェクトの実際のビルドコマンド（例: bun run build）に置き換えてください
         run: bun run main
-        
+
       # ⬆️ ここまでBunプロジェクトのセットアップとビルド ⬆️
-      
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
-        
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # 💡 ここをビルド結果のディレクトリ (out) に変更 💡
-          path: 'out' 
-          
+          path: "out"
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
