@@ -1,7 +1,8 @@
-import { config } from "./lib";
+import { config, githubStatus } from "./lib";
 
 async function main() {
   const cfg = await config();
-  console.log(cfg);
+  const ghs = await githubStatus(cfg);
+  console.log(ghs);
 }
 main();
