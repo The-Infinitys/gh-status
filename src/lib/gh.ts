@@ -65,14 +65,11 @@ async function callApi<T>(path: string): Promise<T> {
         // gh apiが失敗した場合、コンソールにエラーを出力し、fetchにフォールバック
         const error = await new Response(proc.stderr).text();
         console.warn(
-          `gh api failed for ${path} (Exit Code: ${exitCode}). Falling back to fetch. Error: ${error}`
+          `gh api failed for ${path} (Exit Code: ${exitCode}). Falling back to fetch. Error: ${error}`,
         );
       }
     } catch (e) {
-      console.warn(
-        `Error running gh api command for ${path}. Falling back to fetch.`,
-        e
-      );
+      console.warn(`Error running gh api command for ${path}. Falling back to fetch.`, e);
       // 処理を継続するため、catch内でフォールバック
     }
   }
@@ -83,9 +80,7 @@ async function callApi<T>(path: string): Promise<T> {
 
   if (!res.ok) {
     const errorText = await res.text();
-    throw new Error(
-      `Failed to fetch ${url}: Status ${res.status}. Body: ${errorText}`
-    );
+    throw new Error(`Failed to fetch ${url}: Status ${res.status}. Body: ${errorText}`);
   }
 
   return (await res.json()) as T;
@@ -100,8 +95,7 @@ export async function githubStatus(config: Config): Promise<GitHubStatus> {
   const username = config.username;
 
   // 遅延用のヘルパー関数 (1秒 = 1000ms)
-  const wait = (ms: number) =>
-    new Promise((resolve) => setTimeout(resolve, ms));
+  const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
   const DELAY_MS = 1000;
 
   // 1. ユーザープロフィール情報とリポジトリ一覧を並行して取得
@@ -122,10 +116,7 @@ export async function githubStatus(config: Config): Promise<GitHubStatus> {
     // 言語データ取得にも callApi を使用
     // 言語APIのパスは repo オブジェクトから取得する必要があるが、
     // callApiでパスを渡すため、URL全体ではなくパスのみを取得
-    const languagesPath = repo.languages_url.replace(
-      /https:\/\/api.github.com/i,
-      ""
-    );
+    const languagesPath = repo.languages_url.replace(/https:\/\/api.github.com/i, "");
 
     let langData: { [key: string]: number };
     try {
@@ -147,7 +138,7 @@ export async function githubStatus(config: Config): Promise<GitHubStatus> {
     ([name, bytes]) => ({
       name,
       bytes,
-    })
+    }),
   );
 
   // 3. GitHubStatusオブジェクトの構築

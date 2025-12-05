@@ -35,9 +35,7 @@ async function loadConfig(): Promise<Config | null> {
       };
     }
 
-    console.error(
-      "Loaded YAML does not contain a valid 'username' string field."
-    );
+    console.error("Loaded YAML does not contain a valid 'username' string field.");
     return null;
   } catch (error) {
     console.error(`Error loading or parsing config file: ${error}`);

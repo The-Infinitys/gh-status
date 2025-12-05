@@ -191,9 +191,7 @@ export class LanguagesUsages {
       return null;
     }
 
-    const item = this.data.find(
-      (d) => d.name.toLowerCase() === language.toLowerCase()
-    );
+    const item = this.data.find((d) => d.name.toLowerCase() === language.toLowerCase());
 
     if (item) {
       // 割合を計算して返す
